@@ -1,6 +1,6 @@
 //
-//  testAndroidGCM.swift
-//  VaporAndroidGCM
+//  testGCM.swift
+//  VaporGCM
 //
 //  Created by Shial on 11/04/2017.
 //
@@ -9,14 +9,14 @@
 import XCTest
 @testable import Vapor
 @testable import HTTP
-@testable import VaporAndroidGCM
+@testable import VaporGCM
 
-class testAndroidGCM: XCTestCase {
+class testGCM: XCTestCase {
     static let allTests = [
-        ("testAndroidGCM", testAndroidGCM),
-        ("testAndroidNotification", testAndroidNotification),
-        ("testAndroidNotificationToJSON", testAndroidNotificationToJSON),
-        ("testAndroidPushMessage", testAndroidPushMessage),
+        ("testGCM", testGCM),
+        ("testNotification", testNotification),
+        ("testNotificationToJSON", testNotificationToJSON),
+        ("testPushMessage", testPushMessage),
         ("testSendMessageToDevice", testSendMessageToDevice),
         ("testSendMessageToMultipleDevices", testSendMessageToMultipleDevices)
     ]
@@ -33,18 +33,18 @@ class testAndroidGCM: XCTestCase {
         drop = nil
     }
     
-    func testAndroidGCM() {
-        let gcm = VaporAndroidGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
+    func testGCM() {
+        let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
         XCTAssertNotNil(gcm)
     }
     
-    func testAndroidNotification() {
-        let notification = AndroidNotification()
+    func testNotification() {
+        let notification = Notification()
         XCTAssertNotNil(notification)
     }
     
-    func testAndroidNotificationToJSON() {
-        let notification = AndroidNotification()
+    func testNotificationToJSON() {
+        let notification = Notification()
         var json: JSON?
         do {
             json = try notification.makeJSON()
@@ -54,10 +54,10 @@ class testAndroidGCM: XCTestCase {
         XCTAssertNotNil(json)
     }
     
-    func testAndroidPushMessage() {
-        var message: AndroidPushMessage?
+    func testPushMessage() {
+        var message: PushMessage?
         do {
-            message = try AndroidPushMessage()
+            message = try PushMessage()
         } catch {
             XCTFail()
         }
@@ -65,9 +65,9 @@ class testAndroidGCM: XCTestCase {
     }
     
     func testSendMessageToDevice() {
-        let gcm = VaporAndroidGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
+        let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
         do {
-            let message = try AndroidPushMessage()
+            let message = try PushMessage()
             let response = try gcm.send(message, to: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
             XCTAssertNotNil(response)
         } catch {
@@ -76,11 +76,11 @@ class testAndroidGCM: XCTestCase {
     }
     
     func testSendMessageToMultipleDevices() {
-        let gcm = VaporAndroidGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
+        let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
         let expectation = self.expectation(description: "asynchronous request")
 
         do {
-            let message = try AndroidPushMessage()
+            let message = try PushMessage()
             var count = 0
             try! gcm.send(message, to: ["1","2","3"], responseHandler: { (token, response, error) in
                 guard error == nil else {

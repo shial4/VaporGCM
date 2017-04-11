@@ -3,8 +3,8 @@ import JSON
 import Vapor
 import HTTP
 
-///VaporAndroidGCM take messages from the application server and send them to the Google Cloud Messaging over HTTP.
-open class VaporAndroidGCM {
+///VaporGCM take messages from the application server and send them to the Google Cloud Messaging over HTTP.
+open class VaporGCM {
     fileprivate let baseURL: String = "https://gcm-http.googleapis.com/gcm/send"
     /**
      Starting from September 2016, you can create new server keys only in the Firebase Console using the Cloud Messaging tab of the Settings panel. Existing projects that need to create a new server key can be imported in the Firebase console without affecting their existing configuration.
@@ -13,7 +13,7 @@ open class VaporAndroidGCM {
     ///Instance of Droplet used to send message
     public weak var drop: Droplet?
     /**
-     The only thing required to create an instance of VaporAndroidGCM is your Droplet instance used to send message over HTTP and your server key required for authorisation.
+     The only thing required to create an instance of VaporGCM is your Droplet instance used to send message over HTTP and your server key required for authorisation.
      - parameter drop Your instance of Droplet stored as weak object to prevent retain cycle
      - parameter key Your server key
      */
@@ -23,11 +23,11 @@ open class VaporAndroidGCM {
     }
     /**
      Send the notification message to multiple device with token.
-     - parameter message Object represent AndroidPushMessage type
+     - parameter message Object represent PushMessage type
      - parameter deviceToken Device token to which notification will be send
      - returns: return POST notification Response object, So you can handle error or proceed with futher interpretation
      */
-    open func send(_ message: AndroidPushMessage, to deviceToken: String) throws -> Response {
+    open func send(_ message: PushMessage, to deviceToken: String) throws -> Response {
         guard let drop = drop else {
             throw InitializeError.missingDroplet
         }
@@ -40,11 +40,11 @@ open class VaporAndroidGCM {
     }
     /**
      Send the notification message to multiple devices
-     - parameter message Object represent AndroidPushMessage type
+     - parameter message Object represent PushMessage type
      - parameter deviceTokens Array of device tokens to which notification will be send
      - parameter responseHander Called each time notification Response object is received, Identified by device token. So you can handle error or proceed with futher interpretation. This block is called for each notification response sended to device.
      */
-    open func send(_ message: AndroidPushMessage, to deviceTokens: [String], responseHandler: ((_ token: String, _ response: Response?, _ error: Error?) -> ())?) throws {
+    open func send(_ message: PushMessage, to deviceTokens: [String], responseHandler: ((_ token: String, _ response: Response?, _ error: Error?) -> ())?) throws {
         guard let drop = drop else {
             throw InitializeError.missingDroplet
         }
@@ -54,7 +54,7 @@ open class VaporAndroidGCM {
         ]
         deviceTokens.forEach() {[weak self] token in
             guard let strongSelf = self else {
-                responseHandler?(token, nil, AndroidGCMSendMessageError.objectDealocated)
+                responseHandler?(token, nil, GCMSendMessageError.objectDealocated)
                 return
             }
             do {

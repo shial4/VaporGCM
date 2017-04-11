@@ -1,41 +1,41 @@
-# VaporAndroidGCM
+# VaporGCM
 
 [![Language](https://img.shields.io/badge/Swift-3.0.2-brightgreen.svg)](http://swift.org)
 ![Vapor](https://img.shields.io/badge/Vapor-1.0.0-green.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporAndroidGCM/master/license)
-[![Build Status](https://travis-ci.org/shial4/VaporAndroidGCM.svg?branch=master)](https://travis-ci.org/shial4/VaporAndroidGCM)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporGCM/master/license)
+[![Build Status](https://travis-ci.org/shial4/VaporGCM.svg?branch=master)](https://travis-ci.org/shial4/VaporGCM)
 
-VaporAndroidGCM is a simple, yet elegant, Swift library that allows you to send Android Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor
+VaporGCM is a simple, yet elegant, Swift library that allows you to send Android/iOS Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor
 
 ## 🔧 Installation
 
 A quick guide, step by step, about how to use this library.
 
-### 1- Add VaporAndroidGCM to your project
+### 1- Add VaporGCM to your project
 
 Add the following dependency to your `Package.swift` file:
 
 ```swift
-.Package(url:"https://github.com/shial4/VaporAndroidGCM.git", majorVersion: 0, minor: 1)
+.Package(url:"https://github.com/shial4/VaporGCM.git", majorVersion: 0, minor: 1)
 ```
 
 And then make sure to regenerate your xcode project. You can use `vapor xcode -y` command, if you have the Vapor toolbox installed.
 
 ## 🚀 Usage
 
-It's really easy to get started with the VaporAndroidGCM library! First you need to import the library, by adding this to the top of your Swift file:
+It's really easy to get started with the VaporGCM library! First you need to import the library, by adding this to the top of your Swift file:
 ```swift
-import VaporAndroidGCM
+import VaporGCM
 ```
-The easiest way to setup VaporAndroidGCM is to create object for example in your `main.swift` file. Like this:
+The easiest way to setup VaporGCM is to create object for example in your `main.swift` file. Like this:
 ```swift
 import Vapor
-import VaporAndroidGCM
+import VaporGCM
 
 let drop = Droplet()
-let gcm = VaporAndroidGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
+let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 ```
-After you have the VaporAndroidGCM instance, we can go ahead and create notification object. To do that we need to use `AndroidNotification`
+After you have the VaporGCM instance, we can go ahead and create notification object. To do that we need to use `AndroidNotification`
 ```swift
 let notification = AndroidNotification()
 ```
@@ -97,7 +97,7 @@ let response = try? gcm.send(message, to: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUd
 ```
 Sending message to device return Vapor `Response` object. Thanks to that we can interprate response by ourselfs and do futher steps.
 
-VaporAndroidGCM allows us to send message to multiple device list at once by using: 
+VaporGCM allows us to send message to multiple device list at once by using: 
 
 ```swift
 try! gcm.send(message, to: ["","",""], responseHandler: { (token, response, error) in
@@ -118,10 +118,10 @@ Done!
 To summarize
 ```swift
 import Vapor
-import VaporAndroidGCM
+import VaporGCM
 
 let drop = Droplet()
-let gcm = VaporAndroidGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
+let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 
 let notification = AndroidNotification()
 let data = JSON([

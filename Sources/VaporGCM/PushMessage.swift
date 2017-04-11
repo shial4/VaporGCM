@@ -1,6 +1,6 @@
 //
-//  AndroidPushMessage.swift
-//  VaporAndroidGCM
+//  PushMessage.swift
+//  VaporGCM
 //
 //  Created by Shial on 11/04/2017.
 //
@@ -9,16 +9,16 @@
 import Foundation
 import JSON
 
-///Priority of the android push message.
+///Priority of the push message.
 public enum GCMPMessagePriority: String {
     case normal = "normal"
     case high = "high"
 }
 
 ///Message passed from your app server to client apps via GCM
-public struct AndroidPushMessage {
+public struct PushMessage {
     ///This parameter specifies the predefined, user-visible key-value pairs of the notification payload.
-    public let notification: AndroidNotification?
+    public let notification: Notification?
     ///This parameter specifies the custom key-value pairs of the message's payload.
     public let data: JSON?
     ///This parameter identifies a group of messages (e.g., with collapse_key: "Updates Available") that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active.
@@ -32,7 +32,7 @@ public struct AndroidPushMessage {
     ///This parameter, when set to true, allows developers to test a request without actually sending a message.
     public var dryRun: Bool?
     
-    init(notification: AndroidNotification? = nil, data: JSON? = nil) throws {
+    init(notification: Notification? = nil, data: JSON? = nil) throws {
         self.notification = notification
         self.data = data
     }

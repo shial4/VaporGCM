@@ -18,7 +18,7 @@ public enum InitializeError: Error, CustomStringConvertible {
     }
 }
 
-public enum AndroidGCMSendMessageError: Error, CustomStringConvertible {
+public enum GCMSendMessageError: Error, CustomStringConvertible {
     case objectDealocated
     
     public var description: String {

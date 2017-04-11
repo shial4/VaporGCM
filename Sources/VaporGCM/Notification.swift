@@ -1,6 +1,6 @@
 //
-//  AndroidNotification.swift
-//  VaporAndroidGCM
+//  Notification.swift
+//  VaporGCM
 //
 //  Created by Shial on 11/04/2017.
 //
@@ -10,7 +10,7 @@ import Foundation
 import JSON
 
 ///Parameters for notification messaging by platform
-public struct AndroidNotification {
+public struct Notification {
     //Indicates notification title. This field is not visible on iOS phones and tablets.
     public var title: String?
     //Indicates notification body text.
@@ -19,7 +19,7 @@ public struct AndroidNotification {
     public var icon: String = "myicon"
     //Indicates a sound to play when the device receives the notification.
     public var sound: String?
-    ///Indicates whether each notification message results in a new entry on the notification center on Android. If not set, each request creates a new notification. If set, and a notification with the same tag is already being shown, the new notification replaces the existing one in notification center.
+    ///Indicates whether each notification message results in a new entry on the notification center. If not set, each request creates a new notification. If set, and a notification with the same tag is already being shown, the new notification replaces the existing one in notification center.
     public var tag: String?
     ///Indicates color of the icon, expressed in #rrggbb format
     public var color: String?
