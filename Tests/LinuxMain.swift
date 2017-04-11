@@ -1,7 +1,8 @@
 #if os(Linux)
 import XCTest
+@testable import VaporGCMTests
 
 XCTMain([
-     testCase(testGCM.allTests),
+     testCase(testVaporGCM.allTests),
 ])
 #endif

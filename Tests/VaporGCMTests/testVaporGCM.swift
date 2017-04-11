@@ -1,5 +1,5 @@
 //
-//  testGCM.swift
+//  testVaporGCM.swift
 //  VaporGCM
 //
 //  Created by Shial on 11/04/2017.
@@ -9,8 +9,9 @@
 import XCTest
 @testable import Vapor
 @testable import HTTP
+@testable import VaporGCM
 
-class testGCM: XCTestCase {
+class testVaporGCM: XCTestCase {
     static let allTests = [
         ("testGCM", testGCM),
         ("testNotification", testNotification),
