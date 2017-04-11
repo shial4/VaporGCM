@@ -35,9 +35,9 @@ import VaporGCM
 let drop = Droplet()
 let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 ```
-After you have the VaporGCM instance, we can go ahead and create notification object. To do that we need to use `AndroidNotification`
+After you have the VaporGCM instance, we can go ahead and create notification object. To do that we need to use `Notification`
 ```swift
-let notification = AndroidNotification()
+let notification = Notification()
 ```
 Creating object is simple but it comes with multiple properties to configure:
 1. title `title`
@@ -49,7 +49,7 @@ Indicates notification icon. Default value is set to `myicon`
 4. sound `sound`
 Indicates a sound to play when the device receives the notification.
 5. tag `tag`
-Indicates whether each notification message results in a new entry on the notification center on Android. If not set, each request creates a new notification. If set, and a notification with the same tag is already being shown, the new notification replaces the existing one in notification center.
+Indicates whether each notification message results in a new entry on the notification center on . If not set, each request creates a new notification. If set, and a notification with the same tag is already being shown, the new notification replaces the existing one in notification center.
 6. color `color`
 Indicates color of the icon, expressed in #rrggbb format
 7. clickAction `clickAction`
@@ -75,24 +75,24 @@ let data = JSON([
 ```
 We can now create message bject which is required to send notification to device
 ```swift
-let message = AndroidPushMessage(notification: notification, data: data)
+let message = PushMessage(notification: notification, data: data)
 ```
-Message object do not require AndroidNotification or JSON object. We can as well send empty message.
+Message object do not require Notification or JSON object. We can as well send empty message.
 ```swift
-let message = try? AndroidPushMessage()
+let message = try? PushMessage()
 ```
 We can create message just with notification peyload
 ```swift
-let message = try? AndroidPushMessage(notification: notification)
+let message = try? PushMessage(notification: notification)
 ```
 Or just with data payload
 ```swift
-let message = try? AndroidPushMessage(data: data)
+let message = try? PushMessage(data: data)
 ```
 
 Now we can send the message with notification payload and data payload to just one device, using:
 ```swift
-let message = try! AndroidPushMessage(notification: notification, data: data)
+let message = try! PushMessage(notification: notification, data: data)
 let response = try? gcm.send(message, to: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 ```
 Sending message to device return Vapor `Response` object. Thanks to that we can interprate response by ourselfs and do futher steps.
@@ -123,13 +123,13 @@ import VaporGCM
 let drop = Droplet()
 let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 
-let notification = AndroidNotification()
+let notification = Notification()
 let data = JSON([
     "score":"5x1",
     "time":"15:10"
 ])
 
-let message = try! AndroidPushMessage(notification: notification, data: data)
+let message = try! PushMessage(notification: notification, data: data)
 let response = try? gcm.send(message, to: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 try! gcm.send(message, to: ["","",""], responseHandler: { (token, response, error) in
     guard error == nil else {
