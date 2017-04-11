@@ -3,6 +3,7 @@
 [![Language](https://img.shields.io/badge/Swift-3-brightgreen.svg)](http://swift.org)
 ![Vapor](https://img.shields.io/badge/Vapor-1.0.0-green.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporAndroidGCM/master/license)
+[![Build Status](https://travis-ci.org/shial4/VaporAndroidGCM.svg?branch=master)](https://travis-ci.org/shial4/VaporAndroidGCM)
 
 AndroidGCM is a simple, yet elegant, Swift library that allows you to send Android Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor
 
