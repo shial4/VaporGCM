@@ -1,6 +1,7 @@
 Packages
 *.xcodeproj
 Config/secrets
+*.pins
 
 ## Build generated
 .build

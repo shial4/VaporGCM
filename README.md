@@ -114,7 +114,7 @@ try! gcm.send(message, to: ["","",""], responseHandler: { (token, response, erro
 Sending message to multiple device return response by `responseHandler` for each device received and identyfied by token.
 
 Done!
-To sumarise
+To summarize
 ```swift
 import Vapor
 import VaporAndroidGCM
