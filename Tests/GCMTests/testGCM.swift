@@ -9,7 +9,6 @@
 import XCTest
 @testable import Vapor
 @testable import HTTP
-@testable import VaporGCM
 
 class testGCM: XCTestCase {
     static let allTests = [
