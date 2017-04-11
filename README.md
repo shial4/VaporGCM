@@ -2,7 +2,7 @@
 
 [![Language](https://img.shields.io/badge/Swift-3-brightgreen.svg)](http://swift.org)
 ![Vapor](https://img.shields.io/badge/Vapor-1.0.0-green.svg)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporAndroidGCM/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporAndroidGCM/master/license)
 
 AndroidGCM is a simple, yet elegant, Swift library that allows you to send Android Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor
 
@@ -153,4 +153,4 @@ You can join the Vapor [slack](http://vapor.team). Or you can create an issue on
 
 ## ⭐ License
 
-This project was released under the [MIT](LICENSE) license.
+This project was released under the [MIT](license) license.
