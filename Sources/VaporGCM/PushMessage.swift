@@ -32,7 +32,7 @@ public struct PushMessage {
     ///This parameter, when set to true, allows developers to test a request without actually sending a message.
     public var dryRun: Bool?
     
-    init(notification: Notification? = nil, data: JSON? = nil) throws {
+    public init(notification: Notification? = nil, data: JSON? = nil) throws {
         self.notification = notification
         self.data = data
     }

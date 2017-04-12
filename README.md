@@ -5,7 +5,9 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporGCM/master/license)
 [![Build Status](https://travis-ci.org/shial4/VaporGCM.svg?branch=master)](https://travis-ci.org/shial4/VaporGCM)
 
-VaporGCM is a simple, yet elegant, Swift library that allows you to send Android/iOS Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor
+VaporGCM is a simple, yet elegant, Swift library that allows you to send Android/iOS Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor.
+Firebase Cloud Messaging (FCM) is a cross-platform messaging solution that lets you reliably deliver messages at no cost.
+[Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/)
 
 ## 🔧 Installation
 
@@ -22,6 +24,8 @@ Add the following dependency to your `Package.swift` file:
 And then make sure to regenerate your xcode project. You can use `vapor xcode -y` command, if you have the Vapor toolbox installed.
 
 ## 🚀 Usage
+
+### 1- Send Message
 
 It's really easy to get started with the VaporGCM library! First you need to import the library, by adding this to the top of your Swift file:
 ```swift
@@ -143,6 +147,42 @@ try! gcm.send(message, to: ["","",""], responseHandler: { (token, response, erro
     print("Device token: \(token)")
 })
 ```
+
+### 2- Device Group
+
+Before sending messages to a device group, you must:
+- Obtain registration tokens for each device you want to add to the group.
+- Create the `notification_key`, which identifies the device group by mapping a particular group (typically a user) to all of the group's associated registration tokens. 
+
+Basic management of device groups — creating and removing groups, and adding or removing devices — is performed via the:
+```swift
+let group = DeviceGroup(operation: .create,
+                            name: "appUser-Chris",
+                            registrationIds: ["4", "8", "15", "16", "23", "42"])
+```
+Where `DeviceGroupOperation` can be:
+```swift
+case create
+case add
+case remove
+```
+
+Sending Device Group Message.
+This message will add devices with ids to exsisting group with name `appUser-Chris`
+And return `notificationKey`
+
+```swift
+let group = DeviceGroup(operation: .add,
+                                name: "appUser-Chris",
+                                registrationIds: ["16", "9"])
+        let response = try? sendDeviceGroup(group, forProject: "SENDER_ID")
+        if let json = response?.json, response?.status.statusCode == 200 {
+            let notificationKey: String = try! json.extract("notification_key")
+            print(notificationKey)
+        }
+```
+
+A successful request returns a `notification_key` inside `JSON`:
 
 ## ⭐ Contributing
 
