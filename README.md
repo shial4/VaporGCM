@@ -175,14 +175,15 @@ And return `notificationKey`
 let group = DeviceGroup(operation: .add,
                                 name: "appUser-Chris",
                                 registrationIds: ["16", "9"])
-        let response = try? sendDeviceGroup(group, forProject: "SENDER_ID")
+        let response = try? gcm.sendDeviceGroup(group, forProject: "SENDER_ID")
         if let json = response?.json, response?.status.statusCode == 200 {
             let notificationKey: String = try! json.extract("notification_key")
             print(notificationKey)
         }
 ```
 
-A successful request returns a `notification_key` inside `JSON`:
+A successful request returns a `notification_key` inside `JSON`
+Save the `notification_key` and the corresponding `name` to use in subsequent operations.
 
 ## ⭐ Contributing
 
