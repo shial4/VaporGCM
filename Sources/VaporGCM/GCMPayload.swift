@@ -1,5 +1,5 @@
 //
-//  Notification.swift
+//  GCMPayload.swift
 //  VaporGCM
 //
 //  Created by Shial on 11/04/2017.
@@ -9,8 +9,8 @@
 import Foundation
 import JSON
 
-///Parameters for notification messaging by platform
-public struct Notification {
+///Parameters for gcmPayload messaging by platform
+public struct GCMPayload {
     //Indicates notification title. This field is not visible on iOS phones and tablets.
     public var title: String?
     //Indicates notification body text.

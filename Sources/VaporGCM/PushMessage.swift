@@ -18,7 +18,7 @@ public enum GCMPMessagePriority: String {
 ///Message passed from your app server to client apps via GCM
 public struct PushMessage {
     ///This parameter specifies the predefined, user-visible key-value pairs of the notification payload.
-    public let notification: Notification?
+    public let gcmPayload: GCMPayload?
     ///This parameter specifies the custom key-value pairs of the message's payload.
     public let data: JSON?
     ///This parameter identifies a group of messages (e.g., with collapse_key: "Updates Available") that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active.
@@ -32,8 +32,8 @@ public struct PushMessage {
     ///This parameter, when set to true, allows developers to test a request without actually sending a message.
     public var dryRun: Bool?
     
-    public init(notification: Notification? = nil, data: JSON? = nil) throws {
-        self.notification = notification
+    public init(gcmPayload: GCMPayload? = nil, data: JSON? = nil) throws {
+        self.gcmPayload = gcmPayload
         self.data = data
     }
     
@@ -41,8 +41,8 @@ public struct PushMessage {
         var payloadData: [String: NodeRepresentable] = [
             "to":recipient
         ]
-        if let notificationData = notification {
-            payloadData["notification"] = try notificationData.makeJSON()
+        if let gcmPayloadData = gcmPayload {
+            payloadData["notification"] = try gcmPayloadData.makeJSON()
         }
         if let payload = data {
             payloadData["data"] = payload

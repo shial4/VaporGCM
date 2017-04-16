@@ -39,15 +39,15 @@ class testVaporGCM: XCTestCase {
     }
     
     func testNotification() {
-        let notification = Notification()
-        XCTAssertNotNil(notification)
+        let gcmPayload = GCMPayload()
+        XCTAssertNotNil(gcmPayload)
     }
     
     func testNotificationToJSON() {
-        let notification = Notification()
+        let gcmPayload = GCMPayload()
         var json: JSON?
         do {
-            json = try notification.makeJSON()
+            json = try gcmPayload.makeJSON()
         } catch {
             XCTFail()
         }
