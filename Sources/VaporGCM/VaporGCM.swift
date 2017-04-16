@@ -18,7 +18,7 @@ open class VaporGCM {
      - parameter drop: Your instance of Droplet stored as weak object to prevent retain cycle
      - parameter key: A server key that authorizes your app server for access to Google services, including sending messages via Firebase Cloud Messaging. You obtain the server key when you create your Firebase project. You can view it in the Cloud Messaging tab of the Firebase console Settings pane.
      */
-    init(forDroplet drop: Droplet, serverKey key: String) {
+    public init(forDroplet drop: Droplet, serverKey key: String) {
         self.drop = drop
         self.key = key
     }
