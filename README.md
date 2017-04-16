@@ -40,9 +40,9 @@ import VaporGCM
 let drop = Droplet()
 let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 ```
-After you have the VaporGCM instance, we can go ahead and create notification object. To do that we need to use `Notification`
+After you have the VaporGCM instance, we can go ahead and create notification object. To do that we need to use `GCMPayload`
 ```swift
-let notification = Notification()
+let gcmPayload = GCMPayload()
 ```
 Creating object is simple but it comes with multiple properties to configure:
 1. title `title`
@@ -80,7 +80,7 @@ let data = JSON([
 ```
 We can now create message bject which is required to send notification to device
 ```swift
-let message = PushMessage(notification: notification, data: data)
+let message = PushMessage(gcmPayload: gcmPayload, data: data)
 ```
 Message object do not require Notification or JSON object. We can as well send empty message.
 ```swift
@@ -88,7 +88,7 @@ let message = try? PushMessage()
 ```
 We can create message just with notification peyload
 ```swift
-let message = try? PushMessage(notification: notification)
+let message = try? PushMessage(gcmPayload: gcmPayload)
 ```
 Or just with data payload
 ```swift
@@ -97,7 +97,7 @@ let message = try? PushMessage(data: data)
 
 Now we can send the message with notification payload and data payload to just one device, using:
 ```swift
-let message = try! PushMessage(notification: notification, data: data)
+let message = try! PushMessage(gcmPayload: gcmPayload, data: data)
 let response = try? gcm.send(message, to: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 ```
 Sending message to device return Vapor `Response` object. Thanks to that we can interprate response by ourselfs and do futher steps.
@@ -134,7 +134,7 @@ let data = JSON([
     "time":"15:10"
 ])
 
-let message = try! PushMessage(notification: notification, data: data)
+let message = try! PushMessage(gcmPayload: gcmPayload, data: data)
 let response = try? gcm.send(message, to: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 try! gcm.send(message, to: ["","",""], responseHandler: { (token, response, error) in
     guard error == nil else {
