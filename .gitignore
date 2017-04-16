@@ -53,3 +53,5 @@ Packages/
 # Carthage/Checkouts
 
 Carthage/Build
+VaporGCM.xcodeproj
+*.pins
