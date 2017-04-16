@@ -1,9 +1,10 @@
 # VaporGCM
 
-[![Language](https://img.shields.io/badge/Swift-3.0.2-brightgreen.svg)](http://swift.org)
+[![Language](https://img.shields.io/badge/Swift-3.0-brightgreen.svg)](http://swift.org)
 ![Vapor](https://img.shields.io/badge/Vapor-1.0.0-green.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporGCM/master/license)
 [![Build Status](https://travis-ci.org/shial4/VaporGCM.svg?branch=master)](https://travis-ci.org/shial4/VaporGCM)
+[![codecov](https://codecov.io/gh/shial4/VaporGCM/branch/master/graph/badge.svg)](https://codecov.io/gh/shial4/VaporGCM)
 
 VaporGCM is a simple, yet elegant, Swift library that allows you to send Android/iOS Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor.
 Firebase Cloud Messaging (FCM) is a cross-platform messaging solution that lets you reliably deliver messages at no cost.
@@ -169,7 +170,8 @@ case remove
 
 Sending Device Group Message.
 This message will add devices with ids to exsisting group with name `appUser-Chris`
-And return `notificationKey`
+A successful request returns a `notificationKey`.
+Save the `notificationKey` and the corresponding `name` to use in subsequent operations.
 
 ```swift
 let group = DeviceGroup(operation: .add,
