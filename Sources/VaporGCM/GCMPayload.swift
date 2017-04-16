@@ -11,6 +11,8 @@ import JSON
 
 ///Parameters for gcmPayload messaging by platform
 public struct GCMPayload {
+    // Simple, empty initializer
+    public init() {}
     //Indicates notification title. This field is not visible on iOS phones and tablets.
     public var title: String?
     //Indicates notification body text.
@@ -68,5 +70,18 @@ public struct GCMPayload {
         }
         let json = try JSON(node: try payload.makeNode())
         return json
+    }
+}
+
+public extension GCMPayload {
+    public init(message: String) {
+        self.init()
+        self.body = message
+    }
+    
+    public init(title: String, body: String) {
+        self.init()
+        self.title = title
+        self.body = body
     }
 }
