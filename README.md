@@ -128,7 +128,7 @@ import VaporGCM
 let drop = Droplet()
 let gcm = VaporGCM(forDroplet: drop, serverKey: "bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...")
 
-let notification = Notification()
+let gcmPayload = GCMPayload()
 let data = JSON([
     "score":"5x1",
     "time":"15:10"
