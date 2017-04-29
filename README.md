@@ -4,6 +4,7 @@
 ![Vapor](https://img.shields.io/badge/Vapor-1.0-green.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporGCM/master/license)
 [![Build Status](https://travis-ci.org/shial4/VaporGCM.svg?branch=master)](https://travis-ci.org/shial4/VaporGCM)
+[![CircleCI](https://circleci.com/gh/shial4/VaporGCM.svg?style=svg)](https://circleci.com/gh/shial4/VaporGCM)
 [![codecov](https://codecov.io/gh/shial4/VaporGCM/branch/master/graph/badge.svg)](https://codecov.io/gh/shial4/VaporGCM)
 
 VaporGCM is a simple, yet elegant, Swift library that allows you to send Android/iOS Push Notifications using HTTP protocol in Linux & macOS. Created for Vapor.
