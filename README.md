@@ -20,7 +20,7 @@ A quick guide, step by step, about how to use this library.
 Add the following dependency to your `Package.swift` file:
 
 ```swift
-.Package(url:"https://github.com/shial4/VaporGCM.git", majorVersion: 0, minor: 1)
+.Package(url:"https://github.com/shial4/VaporGCM.git", majorVersion: 0, minor: 2)
 ```
 
 And then make sure to regenerate your xcode project. You can use `vapor xcode -y` command, if you have the Vapor toolbox installed.
