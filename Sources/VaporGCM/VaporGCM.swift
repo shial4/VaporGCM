@@ -40,7 +40,7 @@ open class VaporGCM {
             "Content-Type":"application/json"
         ]
         let body = try Body(message.makeJSON(recipient: deviceToken))
-        return try drop.client.post(baseURL, headers: headers, body: body)
+        return try drop.client.post(baseURL, headers, body)
     }
     /**
      Send the notification message to multiple devices
@@ -63,7 +63,7 @@ open class VaporGCM {
             }
             do {
                 let body = try Body(message.makeJSON(recipient: token))
-                let response = try drop.client.post(strongSelf.baseURL, headers: headers, body: body)
+                let response = try drop.client.post(strongSelf.baseURL, headers, body)
                 responseHandler?(token, response, nil)
             } catch {
                 responseHandler?(token, nil, error)
@@ -90,6 +90,6 @@ open class VaporGCM {
             "Content-Type":"application/json"
         ]
         let body = try Body(group.makeJSON())
-        return try drop.client.post(creatingDeviceGroupURL, headers: headers, body: body)
+        return try drop.client.post(creatingDeviceGroupURL, headers, body)
     }
 }
