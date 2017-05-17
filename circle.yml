@@ -9,4 +9,4 @@ test:
     - swift build -c release
     - swift test
   post:
-    - eval "$(curl -sL https://swift.vapor.sh/codecov)"
+    - bash <(curl -s https://codecov.io/bash)
