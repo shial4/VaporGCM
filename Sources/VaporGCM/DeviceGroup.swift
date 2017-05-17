@@ -42,11 +42,11 @@ public struct DeviceGroup {
     }
     
     public func makeJSON() throws -> JSON {
-        let json = JSON([
-            "operation": operation.rawValue.makeNode(),
-            "notification_key_name": notificationKeyName.makeNode(),
-            "registration_ids": try registrationIds.makeNode()
-        ])
+        let json = try JSON([
+            "operation": operation.rawValue.makeNode(in: nil),
+            "notification_key_name": notificationKeyName.makeNode(in: nil),
+            "registration_ids": try registrationIds.makeNode(in: nil)
+            ].makeNode(in: nil))
         return json
     }
 }

@@ -55,7 +55,7 @@ class testVaporGCM: XCTestCase {
         let gcmPayload = GCMPayload(message: "message")
         do {
             let json = try gcmPayload.makeJSON()
-            let value: String = try json.extract("body")
+            let value: String = try json.get("body")
             XCTAssertNotNil(value)
         } catch {
             XCTFail()
@@ -67,9 +67,9 @@ class testVaporGCM: XCTestCase {
         let gcmPayload = GCMPayload(title: "title", body: "body")
         do {
             let json = try gcmPayload.makeJSON()
-            let value1: String = try json.extract("title")
+            let value1: String = try json.get("title")
             XCTAssertNotNil(value1)
-            let value2: String = try json.extract("body")
+            let value2: String = try json.get("body")
             XCTAssertNotNil(value2)
         } catch {
             XCTFail()
@@ -103,7 +103,7 @@ class testVaporGCM: XCTestCase {
         do {
             let json = try gcmPayload.makeJSON()
             try ["title","body","sound","tag","color","click_action","body_loc_key"].forEach() { key in
-                let value: String = try json.extract(key)
+                let value: String = try json.get(key)
                 XCTAssertNotNil(value)
             }
         } catch {
@@ -112,7 +112,7 @@ class testVaporGCM: XCTestCase {
         do {
             let json = try gcmPayload.makeJSON()
             try ["body_loc_args","title_loc_key","title_loc_args"].forEach() { key in
-                let value: JSON = try json.extract(key)
+                let value: JSON = try json.get(key)
                 XCTAssertNotNil(value)
             }
         } catch {
@@ -152,25 +152,25 @@ class testVaporGCM: XCTestCase {
         do {
             let json = try message?.makeJSON(recipient: "token11")
             
-            let value1: JSON? = try json?.extract("notification")
+            let value1: JSON? = try json?.get("notification")
             XCTAssertNotNil(value1)
             
-            let value2: JSON? = try json?.extract("data")
+            let value2: JSON? = try json?.get("data")
             XCTAssertNotNil(value2)
             
-            let value3: String? = try json?.extract("priority")
+            let value3: String? = try json?.get("priority")
             XCTAssertTrue(value3 == "high")
             
-            let value4: Int? = try json?.extract("time_to_live")
+            let value4: Int? = try json?.get("time_to_live")
             XCTAssertTrue(value4 == 5)
             
-            let value5: String? = try json?.extract("collapse_key")
+            let value5: String? = try json?.get("collapse_key")
             XCTAssertTrue(value5 == "Collapse")
             
-            let value6: String? = try json?.extract("restricted_package_name")
+            let value6: String? = try json?.get("restricted_package_name")
             XCTAssertTrue(value6 == "Package")
             
-            let value7: Bool? = try json?.extract("dry_run")
+            let value7: Bool? = try json?.get("dry_run")
             XCTAssertTrue(value7 == true)
             
         } catch {

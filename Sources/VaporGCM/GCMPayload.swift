@@ -68,7 +68,7 @@ public struct GCMPayload {
         if let value = titleLocArgs {
             payload["title_loc_args"] = value
         }
-        let json = try JSON(node: try payload.makeNode())
+        let json = JSON(node: try payload.makeNode(in: nil))
         return json
     }
 }

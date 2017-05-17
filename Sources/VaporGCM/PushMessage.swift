@@ -62,7 +62,7 @@ public struct PushMessage {
         if let run = dryRun {
             payloadData["dry_run"] = run
         }
-        let json = try JSON(node: try payloadData.makeNode())
+        let json = JSON(node: try payloadData.makeNode(in: nil))
         return json
     }
 }

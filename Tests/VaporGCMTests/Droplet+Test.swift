@@ -11,7 +11,7 @@
 
 extension Droplet {
     class func makeTestDroplet() throws -> Droplet {
-        let drop = Droplet(arguments: ["dummy/path/", "prepare"])
+        let drop = try Droplet()
         return drop
     }
 }
