@@ -1,7 +1,7 @@
 # VaporGCM
 
 [![Language](https://img.shields.io/badge/Swift-3.0-brightgreen.svg)](http://swift.org)
-![Vapor](https://img.shields.io/badge/Vapor-1.0-green.svg)
+![Vapor](https://img.shields.io/badge/Vapor-2.x-green.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/shial4/VaporGCM/master/license)
 [![Build Status](https://travis-ci.org/shial4/VaporGCM.svg?branch=master)](https://travis-ci.org/shial4/VaporGCM)
 [![CircleCI](https://circleci.com/gh/shial4/VaporGCM.svg?style=svg)](https://circleci.com/gh/shial4/VaporGCM)
