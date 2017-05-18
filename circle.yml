@@ -5,6 +5,7 @@ dependencies:
     - sudo chmod -R a+rx /usr/
 test:
   override:
+    - swift package update
     - swift build
     - swift build -c release
     - swift test
